@@ -45,6 +45,7 @@ public class RecipeUI {
                         break;
                     case "3":
                         // 設問3: 検索機能
+                        // searchRecipe();
                         break;
                     case "4":
                         System.out.println("Exit the application.");
@@ -126,6 +127,9 @@ public class RecipeUI {
      * @throws java.io.IOException 入出力が受け付けられない
      */
     private void searchRecipe() throws IOException {
+        // System.out.print("Enter search query (e.g., 'name=Tomato&ingredient=Garlic'): ");
+        // System.out.print("name=");
+        // String inputName = this.reader.readLine();
 
     }
 

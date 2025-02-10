@@ -39,9 +39,7 @@ public class RecipeFileHandler {
                 lines.add(line);
             }
             return lines;
-                
-                
-                
+            
             } catch (IOException e) {
                 System.out.println("Error reading file:" + e.getMessage());
             }
