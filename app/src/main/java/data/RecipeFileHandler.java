@@ -33,10 +33,9 @@ public class RecipeFileHandler {
          * テキストデータ読み込みの際に例外が発生した場合は例外メッセージを出力
          */
         try (BufferedReader reader = new BufferedReader(new FileReader(this.filePath))) {
-            String line = "";
+            String line;
             ArrayList<String> lines = new ArrayList<>();
             while ((line = reader.readLine()) != null) {
-                // System.out.println(line);
                 lines.add(line);
             }
             return lines;
