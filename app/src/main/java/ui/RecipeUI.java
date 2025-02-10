@@ -76,7 +76,7 @@ public class RecipeUI {
         ArrayList<String> recipeNames = new ArrayList<>();
         ArrayList<String> ingredients = new ArrayList<>();
         ArrayList<String> recipes = this.fileHandler.readRecipes();
-        if (recipes != null) {
+        if (!recipes.isEmpty()) {
             for (int i = 0; i < recipes.size(); i++) {
                 String[] recipe = recipes.get(i).split(",", 2);
                 recipeNames.add(recipe[0]);
