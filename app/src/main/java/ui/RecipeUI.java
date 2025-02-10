@@ -41,6 +41,7 @@ public class RecipeUI {
                         break;
                     case "2":
                         // 設問2: 新規登録機能
+                        addNewRecipe();
                         break;
                     case "3":
                         // 設問3: 検索機能
@@ -70,21 +71,22 @@ public class RecipeUI {
      * recipeNames,Ingredients配列へそれぞれ入れ成形する
      * 読み込んだデータが空の場合はエラーメッセージを出力
      */
-        RecipeFileHandler reader = new RecipeFileHandler("app/src/main/resources/recipes.txt");
-        ArrayList<String> recipes = reader.readRecipes();
+        // RecipeFileHandler reader = new RecipeFileHandler();
+
         ArrayList<String> recipeNames = new ArrayList<>();
         ArrayList<String> ingredients = new ArrayList<>();
+        ArrayList<String> recipes = this.fileHandler.readRecipes();
         if (recipes != null) {
-            for (int i = 0; i < recipes.length; i++) {
+            for (int i = 0; i < recipes.size(); i++) {
                 String[] recipe = recipes.get(i).split(",", 2);
                 recipeNames.add(recipe[0]);
                 ingredients.add(recipe[1]);
             }
             System.out.println("Recipes:");
             System.out.println("-----------------------------------");
-            for (int i = 0; i < recipeNames.size();i++) {
-                System.out.println("Recipe Name: " + recipeNames.get(0));
-                System.out.println("Main Ingredients: " + ingredients.get(0));
+            for (int i = 0; i < recipeNames.size(); i++) {
+                System.out.println("Recipe Name: " + recipeNames.get(i));
+                System.out.println("Main Ingredients: " + ingredients.get(i));
                 System.out.println("-----------------------------------");
             }
         } else {
@@ -101,6 +103,19 @@ public class RecipeUI {
      * @throws java.io.IOException 入出力が受け付けられない
      */
     private void addNewRecipe() throws IOException {
+        /*
+         * ユーザーから入力を受け付ける
+         * 受け付けた内容を引数にRecipeFileHandlerからaddRecipe()メソッドを呼び出し
+         * 入力が完了したらメッセージを出力
+         */
+        // BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Enter recipe name: ");
+        String inputName = this.reader.readLine();
+        System.out.print("Enter main ingredients (comma separated): ");
+        String inputIngredient = this.reader.readLine();
+
+        this.fileHandler.addRecipe(inputName, inputIngredient);
+        System.out.println("Recipe added successfully.");
 
     }
 
