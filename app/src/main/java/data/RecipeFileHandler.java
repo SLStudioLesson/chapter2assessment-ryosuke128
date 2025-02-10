@@ -2,6 +2,8 @@ package data;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.io.FileReader;
+import java.io.BufferedReader;
 
 public class RecipeFileHandler {
     private String filePath;
@@ -21,14 +23,29 @@ public class RecipeFileHandler {
      *
      * @return レシピデータ
      */
-    public ArrayList<String> readRecipes() {
-        // try {
-
-        // } catch (IOException e) {
-        //     System.out.println("Error reading file:" + e.getMessage());
-        // }
-        return null;
-    }
+    public ArrayList<Stirng> readRecipes() {
+        /*
+         * recipes.txtからレシピデータを読み込むため例外処理を行う
+         * recipes.txtから１行ごとにデータを読み込み配列に追加
+         * 追加した配列を呼び出し元に戻す
+         * テキストデータ読み込みの際に例外が発生した場合は例外メッセージを出力
+         */
+        try (BufferedReader reader = new BufferedReader(new FileReader(this.filePath))) {
+            String line;
+            ArrayList<String> lines = new ArrayList<>();
+            while ((line = reader.readLine()) != null) {
+                lines.add(line);
+                return lines;
+            }
+            // for (int i = 0; i < lines.size(); i++) {
+            //     System.out.println(lines.get(i));
+            // }
+            
+        } catch (IOException e) {
+            System.out.println("Error reading file:" + e.getMessage());
+        }
+            return null;
+        }
 
     /**
      * 設問2: 新規登録機能
